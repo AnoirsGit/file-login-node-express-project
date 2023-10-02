@@ -70,4 +70,12 @@ const refreshToken = async (req, res) => {
     }
 }
 
-module.exports = { signup, signin, refreshToken }
+const info = async (req, res) => {
+    try {
+        return res.status(200).json({ userId: req.user.id })
+    } catch (error) {
+        res.status(500).json({ error: 'Server error' });
+    }
+}
+
+module.exports = { signup, signin, refreshToken, info }
